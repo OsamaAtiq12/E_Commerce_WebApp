@@ -305,22 +305,24 @@ function Search_Product() {
     });
 }
 
+
+//Storing image in the local Storage to be added
+fileEl = document.getElementById("file-el");
+fileEl.addEventListener("change", () => {
+  const fr = new FileReader();
+  fr.readAsDataURL(fileEl.files[0]);
+  fr.addEventListener("load", () => {
+    var url = fr.result;
+    localStorage.setItem("image_url", url);
+  });
+});
+
 //Adding New Product to the Category List
 function Add_New_Product() {
   console.log("fe");
   const title = document.getElementById("Title").value;
   const price = document.getElementById("Price").value;
   const Description = document.getElementById("Des").value;
-
-  fileEl = document.getElementById("file-el");
-  fileEl.addEventListener("change", () => {
-    const fr = new FileReader();
-    fr.readAsDataURL(fileEl.files[0]);
-    fr.addEventListener("load", () => {
-      var url = fr.result;
-      localStorage.setItem("image_url", url);
-    });
-  });
 
   var temp = `<div class="card mt-4" style="width: 20rem;" >
                     <img class="card-img-top" id="tableBanner" alt="Card image cap">
@@ -351,4 +353,5 @@ function Add_New_Product() {
   var img = localStorage.getItem("image_url");
   bannerImg = document.getElementById("tableBanner");
   bannerImg.src = img;
+  localStorage.removeItem("image_url");
 }
