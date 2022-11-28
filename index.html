@@ -1,0 +1,180 @@
+<!-- **********************************************************************************
+ Name: Osama Atiq
+ Company: Programmers Force
+ Project: E-Commerce Web App
+ Technologies: Html ,Css ,Bootstrap, Javascript
+ ********************************************************************************** -->
+
+
+<!-- Dashboard Page -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+
+    <!-- Ajax library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- font Awesome Cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--     
+            Website favicon -->
+    <link rel="icon" href="./Assets/pngwing.com.png" type="image/icon type">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom Dashboard Css -->
+    <link rel="stylesheet" href="./Css/Dashboard.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!-- Navbar Section Start -->
+    <div class="container-fluid  mynav">
+        <div class="row">
+            <div class="col-md-2 bg-dark d-flex justify-content-center flex-column align-items-center ">
+                <h4 class="text-white text-center">Welcome Back,</h4>
+                <img class="img-style mx-4 " id="self-img" src="" alt="">
+                <span class="text-white mx-4 mt-2 text-center mb-3" id="fullname">Osama Atiq</span>
+            </div>
+
+            <div class="col-md-8 bg-dark  ">
+                <h3 class="text-white text-center mb-4">User Details</h3>
+                <div class="d-flex justify-content-evenly flex-wrap " id="detail">
+                    <h6 class="text-white text-center mb-3 mx-2" id="email">Email: Osamaatiq43@gmail.com</h6>
+                    <h6 class="text-white text-center mb-3 mx-2 " id="fname">FirstName: Osama</h6>
+                    <h6 class="text-white text-center mx-2 " id="lname">LastName: Atiq</h6>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-2 bg-dark text-center ">
+                <button class="btn btn-danger mt-5 log-btn " onclick="logout()"><i class="fa fa-sign-out "
+                        aria-hidden="true"></i>Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar Section End -->
+
+
+    <!-- Product Main Functionality Section Starts from here -->
+    <div class="container-fluid mt-1">
+
+        <div class="row">
+            <!-- Product Category Starts from here -->
+            <div class="col-md-3 category-area">
+                <h4 class="text-center mb-2">
+                    Categories
+                </h4>
+                <h5 class="mb-3 text-center">Please Select your category</h5>
+                <div class="category" id="my-category">
+
+
+                </div>
+
+            </div>
+            <!-- Product Category Ends here -->
+
+            <!-- Product Listing Starts from here -->
+            <div class="col-md-6 div">
+
+                <div class="Product-area" id="Product-list">
+
+                </div>
+
+
+                <div hidden id="spinner">
+                    <h6 class="text-dark">Loading...</h6>
+                </div>
+            </div>
+            <!-- Product Listing Ends here -->
+            <!-- Product Search + Adding Custom Product Starts from here -->
+            <div class="col-md-3 Prodadd ">
+                <div class="d-flex justify-content-evenly mt-5">
+                    <button class="btn btn-primary" onclick="Search_Product()">Search</button>
+                    <div class="input-group mx-2">
+                        <input type="text" class="form-control" id="Search_product" placeholder="Search Product"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+
+                </div>
+                <button type="button" class="btn btn-success mt-4" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Add Product +
+                </button>
+                <div class="mt-4 mb-3">
+                    <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        onclick="getall()">
+                        Show All Products
+                    </button>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add a New Product</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <!-- Add new Product Modal -->
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Title</span>
+                                    <input type="text" required id="Title" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Pricing</span>
+                                    <input type="number" required id="Price" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Description</span>
+                                    <input type="text" required id="Des" class="form-control"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <input type="file" id="file-el">
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="Add_New_Product()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Product Search + Adding Custom Product Ends here -->
+        </div>
+
+    </div>
+
+    <!-- Bootstrap Custom JavaScript Cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom Js For Dashboard Page -->
+    <script src="./Scripts/Dashboard.js"></script>
+</body>
+
+</html>

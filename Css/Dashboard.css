@@ -1,0 +1,121 @@
+.img-style {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid greenyellow;
+}
+.Product-area {
+  background-color: #f5f9fc;
+  border-radius: 10px;
+  height: 610px;
+  overflow-y: auto;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border: 2px solid black;
+  display: flex;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.Product-area::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.Product-area::-webkit-scrollbar {
+  width: 12px;
+  background-color: white;
+}
+
+.Product-area::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: black;
+}
+
+.icon-style {
+  margin-right: 7px;
+}
+
+.edit-tr {
+  border: 3px solid black;
+}
+.edit-tr2 {
+  border: none;
+}
+/* 
+Spinner Starts From here */
+#spinner:not([hidden]) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid black;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.category {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.category-style {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.category-style:hover {
+  background-color: white;
+  color: black;
+}
+
+.category-area {
+  background-color: #f5f9fc;
+  border: 2px solid black;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.Prodadd {
+  background-color: #f5f9fc;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+/* Detail Page Css */
+.c-body {
+  border: 3px solid black !important;
+  border-radius: 10px;
+}
+.detail-area {
+  background-color: #f5f9fc;
+}
